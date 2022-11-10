@@ -23,14 +23,14 @@ namespace SNAKE
     public partial class MainWindow : Window
     {
         SnakeGame jocSerp;
-        DispatcherTimer timer = new DispatcherTimer();
+        
         public MainWindow()
         {
-           
             InitializeComponent();
             jocSerp = new SnakeGame();
             jocSerp.ColocarPomes();
-            timer.Interval = TimeSpan.FromMilliseconds(500);
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(200);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
@@ -39,17 +39,15 @@ namespace SNAKE
         {
             int tamanyXCasella = (int)(canvas.ActualWidth / SnakeGame.X_SIZE);
             int tamanyYCasella = (int)(canvas.ActualHeight / SnakeGame.Y_SIZE);
-
-            foreach (var poma in jocSerp.posicioPomes)
+            canvas.Children.Clear();
+            foreach(var poma in jocSerp.posicioPomes)
             {
-                int tamanyXCasellap = (int)(canvas.ActualWidth / SnakeGame.X_SIZE);
-                int tamanyYCasellap = (int)(canvas.ActualHeight / SnakeGame.Y_SIZE);
                 Ellipse dibuixPoma = new Ellipse();
                 dibuixPoma.Fill = Brushes.Red;
-                dibuixPoma.Width = tamanyXCasellap;
-                dibuixPoma.Height = tamanyYCasellap;
-                Canvas.SetLeft(dibuixPoma, poma.X * tamanyXCasellap);
-                Canvas.SetTop(dibuixPoma, poma.Y * tamanyYCasellap);
+                dibuixPoma.Width = tamanyXCasella;
+                dibuixPoma.Height = tamanyYCasella;
+                Canvas.SetLeft(dibuixPoma, poma.X * tamanyXCasella);
+                Canvas.SetTop(dibuixPoma, poma.Y * tamanyYCasella);
                 canvas.Children.Add(dibuixPoma);
             }
             

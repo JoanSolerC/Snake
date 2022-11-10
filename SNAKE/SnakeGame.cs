@@ -64,6 +64,7 @@ namespace Snake2
         }
         public void ColocarPomes()
         {
+            posicioPomes.Clear();
             for (int i = 0; i < NPOMES; i++)
             {
                 posicioPomes.Add(new Point(rand.Next(0, X_SIZE), rand.Next(0, Y_SIZE)));
