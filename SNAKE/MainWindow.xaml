@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Button Click="Button_Click">Play</Button>
+        </StackPanel>
+        <Canvas Grid.Row="1" Background="LightBlue" Name="canvas" KeyDown="canvas_KeyDown"></Canvas>
 
     </Grid>
 </Window>
